@@ -1,0 +1,34 @@
+@use './colors' as vars;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin blue-button {
+  background-color: vars.$blue;
+  color: vars.$white;
+  @include flex-center;
+  border-radius: 18px;
+  transition: filter 0.2s;
+  width: 100%;
+  max-width: 380px;
+  max-height: 70px;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
+
+@mixin button {
+  background-color: vars.$gold;
+  color: vars.$black;
+  @include flex-center;
+  border-radius: 14px;
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
