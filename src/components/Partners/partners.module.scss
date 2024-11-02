@@ -2,6 +2,7 @@
 @use '../../styles/partials' as partials;
 
 .section {
+  margin-bottom: 116px;
   padding: 14px 0px;
   width: 100%;
   @include partials.flex-center;

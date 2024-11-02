@@ -1,0 +1,42 @@
+@use '../../styles/colors' as vars;
+
+.section {
+  position: relative;
+  margin-bottom: 90px;
+}
+
+.blueBar {
+  display: block;
+  background-color: vars.$blue;
+  width: 100%;
+  height: 107px;
+  position: absolute;
+  top: 41%;
+}
+
+.goldBar {
+  display: block;
+  background-color: vars.$gold;
+  width: 100%;
+  height: 107px;
+  position: absolute;
+  top: calc(41% + 107px);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h2 {
+    margin: 0px 0px 49px 58px;
+    color: vars.$blue;
+    font-size: 30px;
+  }
+
+  .card {
+    width: 339px;
+    height: 399px;
+    border-radius: 16px;
+    outline: none;
+  }
+}
