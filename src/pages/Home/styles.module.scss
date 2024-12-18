@@ -1,0 +1,28 @@
+.container {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+
+  h3 {
+    margin: 0px 0px 49px 58px;
+    color: #115bb6;
+    font-size: 30px;
+  }
+
+  .wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (max-width: 640px) {
+    .wrapper {
+      justify-content: center;
+      gap: 60px;
+    }
+  }
+}

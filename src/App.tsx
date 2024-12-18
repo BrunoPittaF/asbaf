@@ -1,19 +1,11 @@
-import Carroussel from './components/Carroussel/Carroussel';
-import GiantLogo from './components/GiantLogo/GiantLogo';
-import Header from './components/Header/Header';
-import Partners from './components/Partners/Partners';
+import { BrowserRouter } from 'react-router-dom';
+import { Router } from './routes/Router';
 
 function App() {
   return (
-    <>
-      <Header></Header>
-      <main>
-        <GiantLogo />
-        <Partners />
-        <Carroussel title="Últimas noticias" />
-        <Carroussel title="Exclusivo associado" />
-      </main>
-    </>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   );
 }
 

@@ -18,14 +18,6 @@ const Partners: React.FC = () => {
           <img src="/images/partner.png" alt="parceiro" />
           <p>Não inviabilize</p>
         </a>
-        <a className={styles.card} href="#">
-          <img src="/images/partner.png" alt="parceiro" />
-          <p>Não inviabilize</p>
-        </a>
-        <a className={styles.card} href="#">
-          <img src="/images/partner.png" alt="parceiro" />
-          <p>Não inviabilize</p>
-        </a>
       </div>
     </section>
   );

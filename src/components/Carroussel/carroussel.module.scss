@@ -39,4 +39,11 @@
     border-radius: 16px;
     outline: none;
   }
+  @media screen and (max-width: 640px) {
+    .slick-slide {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }
