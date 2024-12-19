@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import styles from './header.module.scss';
 import { FiMenu } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -24,7 +24,10 @@ const Header: React.FC = () => {
           <div className={styles.content_menu}>
             <FiMenu onClick={ActiveMenuHamburguer} />
 
-            <img src="/images/logo.png" />
+            <Link className={styles.logo} to="/">
+              <img src="/images/logo.png" />
+            </Link>
+
             <a href="#">Área para associado</a>
           </div>
 
