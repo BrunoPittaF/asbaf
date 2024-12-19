@@ -5,6 +5,7 @@ import Directors from '../pages/Directors';
 import Gallery from '../pages/Gallery';
 import Legislation from '../pages/legislation/Legislation';
 import Legal from '../pages/Legal/Legal';
+import Status from '../pages/Status/Status';
 
 export function Router() {
   return (
@@ -15,6 +16,7 @@ export function Router() {
         <Route path="/galeria" element={<Gallery />} />
         <Route path="/legislacao" element={<Legislation />} />
         <Route path="/juridico" element={<Legal />} />
+        <Route path="/estatuto" element={<Status />} />
       </Route>
     </Routes>
   );
