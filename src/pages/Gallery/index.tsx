@@ -17,7 +17,7 @@ const Directors: React.FC = () => {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        <h2>Diretores</h2>
+        <h2>Galeria</h2>
         <Gallery images={images} />
       </div>
     </main>

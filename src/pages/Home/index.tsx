@@ -1,8 +1,5 @@
 import Carroussel from '../../components/Carroussel/Carroussel';
-import GiantLogo from '../../components/GiantLogo/GiantLogo';
-import Header from '../../components/Header/Header';
 import InstagramEmbed from '../../components/InstagramEmbed/InstagramEmbed';
-import Partners from '../../components/Partners/Partners';
 
 import styles from './styles.module.scss';
 
@@ -19,10 +16,7 @@ export function Home() {
   const [value, onChange] = useState<Value>(new Date(2025, 0, 28));
   return (
     <>
-      <Header></Header>
-      <main>
-        <GiantLogo />
-        <Partners />
+      <main className={styles.main}>
         <Carroussel title="Últimas noticias" />
         <Carroussel title="Exclusivo associado" />
 
