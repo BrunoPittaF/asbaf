@@ -12,7 +12,7 @@ type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 export function Home() {
-  const [value, onChange] = useState<Value>(new Date(2025, 0, 28));
+  const [value, onChange] = useState<Value>(new Date(2024, 11, 27));
   return (
     <>
       <main className={styles.main}>
@@ -22,7 +22,7 @@ export function Home() {
         <div className={styles.container}>
           <h3>Agenda do associado</h3>
           <div className={styles.wrapper}>
-            <Calendar onChange={onChange} value={value} />
+            <Calendar locale="pt-BR" onChange={onChange} value={value} />
             <InstagramEmbed />
           </div>
         </div>
