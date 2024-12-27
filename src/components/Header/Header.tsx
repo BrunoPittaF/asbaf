@@ -37,19 +37,21 @@ const Header: React.FC = () => {
       {isOpen && (
         <div className={styles.menu_suspended}>
           <div className={styles.menu_suspended_content}>
-            <button onClick={() => handleButton('/sobre')}>Sobre</button>
+            <button onClick={() => handleButton('/')}>Home</button>
             <button onClick={() => handleButton('/diretores')}>Diretorias</button>
             <button onClick={() => handleButton('/legislacao')}>Legislação</button>
-            <button onClick={() => handleButton('/ultimas-noticias')}>Últimas Noticias</button>
-            <button onClick={() => handleButton('/cursos-e-aperfeicoamentos')}>
+            {/* <button onClick={() => handleButton('/ultimas-noticias')}>Últimas Noticias</button> */}
+            {/* <button onClick={() => handleButton('/cursos-e-aperfeicoamentos')}>
               Cursos e aperfeiçoamentos
-            </button>
-            <button onClick={() => handleButton('/juridico')}>Jurídico</button>
+            </button> */}
+            {/* <button onClick={() => handleButton('/juridico')}>Jurídico</button> */}
             <button onClick={() => handleButton('/seja-parceiro-asbaf')}>Seja parceiro ASBAF</button>
-            <button onClick={() => handleButton('/galeria')}>Galeria</button>
-            <button onClick={() => handleButton('/estatuto')}>Estatuto</button>
+            {/* <button onClick={() => handleButton('/galeria')}>Galeria</button> */}
+            {/* <button onClick={() => handleButton('/estatuto')}>Estatuto</button> */}
             <a href="#">Área para associado</a>
-            <button className={styles.button_join}>Associe-se</button>
+            <button onClick={() => handleButton('/associe-se')} className={styles.button_join}>
+              Associe-se
+            </button>
           </div>
           <div className={styles.menu_curtain} onClick={ActiveMenuHamburguer}></div>
         </div>

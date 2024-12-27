@@ -5,7 +5,6 @@ import styles from './styles.module.scss';
 
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import Footer from '../../components/Footer/footer';
 import { useState } from 'react';
 
 type ValuePiece = Date | null;
@@ -18,7 +17,7 @@ export function Home() {
     <>
       <main className={styles.main}>
         <Carroussel title="Últimas noticias" />
-        <Carroussel title="Exclusivo associado" />
+        {/* <Carroussel title="Exclusivo associado" /> */}
 
         <div className={styles.container}>
           <h3>Agenda do associado</h3>
@@ -27,7 +26,6 @@ export function Home() {
             <InstagramEmbed />
           </div>
         </div>
-        <Footer />
       </main>
     </>
   );

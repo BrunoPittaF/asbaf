@@ -18,9 +18,15 @@ const Footer: React.FC = () => {
         </div>
         <div className={styles.content}>
           <div className={styles.buttons}>
-            <img src={Icon['instagram']} alt="instagram" />
-            <img src={Icon['facebook']} alt="facebook" />
-            <img src={Icon['twitter']} alt="twitter" />
+            <a href="https://www.instagram.com/asbaf_salvador/" target="_blank">
+              <img src={Icon['instagram']} alt="instagram" />
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100092981973094&mibextid=JRoKGi" target="_blank">
+              <img src={Icon['facebook']} alt="facebook" />
+            </a>
+            <a href="https://x.com/AsbafSalvador?t=YdW3FdytDvoT8mSHaQ-oJg&s=09" target="_blank">
+              <img src={Icon['twitter']} alt="twitter" />
+            </a>
           </div>
           <p>Endereço:</p>
           <address>

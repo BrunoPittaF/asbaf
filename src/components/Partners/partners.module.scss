@@ -18,6 +18,8 @@
       gap: 12px;
 
       img {
+        object-fit: contain;
+        background-color: white;
         width: 100px;
         height: 100px;
         border-radius: 100%;

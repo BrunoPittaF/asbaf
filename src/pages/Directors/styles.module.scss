@@ -2,6 +2,7 @@
   padding-top: 30px;
   background-image: url('/images/bg.png');
   background-repeat: repeat;
+  min-height: 900px;
 
   .container {
     display: flex;
@@ -16,5 +17,9 @@
       text-align: center;
       margin-bottom: 128px;
     }
+  }
+
+  @media screen and (max-width: 640px) {
+    min-height: auto;
   }
 }
