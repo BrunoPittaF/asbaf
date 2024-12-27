@@ -88,22 +88,22 @@ const Carroussel: React.FC<ICarroussel> = ({ title }: ICarroussel) => {
         <h2>{title}</h2>
         <Slider {...settings}>
           <a href="#" className={styles.card}>
-            <img src="/images/card.png" alt="card" />
+            <img src="/images/nota-de-esclarecimento.jpg" alt="card" />
           </a>
           <a href="#" className={styles.card}>
-            <img src="/images/card.png" alt="card" />
+            <img src="/images/nota-de-esclarecimento.jpg" alt="card" />
           </a>
           <a href="#" className={styles.card}>
-            <img src="/images/card.png" alt="card" />
+            <img src="/images/nota-de-esclarecimento.jpg" alt="card" />
           </a>
           <a href="#" className={styles.card}>
-            <img src="/images/card.png" alt="card" />
+            <img src="/images/nota-de-esclarecimento.jpg" alt="card" />
           </a>
           <a href="#" className={styles.card}>
-            <img src="/images/card.png" alt="card" />
+            <img src="/images/nota-de-esclarecimento.jpg" alt="card" />
           </a>
           <a href="#" className={styles.card}>
-            <img src="/images/card.png" alt="card" />
+            <img src="/images/nota-de-esclarecimento.jpg" alt="card" />
           </a>
         </Slider>
       </div>

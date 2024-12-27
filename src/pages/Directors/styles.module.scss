@@ -1,6 +1,6 @@
 .main {
   padding-top: 30px;
-  background-image: url('/images/bg.png');
+  // background-image: url('/images/bg.png');
   background-repeat: repeat;
   min-height: 900px;
 
@@ -13,9 +13,10 @@
     h2 {
       font-weight: bold;
       font-size: 60px;
-      color: black;
+      color: #115bb6;
       text-align: center;
       margin-bottom: 128px;
+      font-family: 'Afacad Flux', 'Inter';
     }
   }
 

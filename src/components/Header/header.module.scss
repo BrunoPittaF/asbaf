@@ -89,6 +89,70 @@
   }
 }
 
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .curtain {
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000, $alpha: 0.6);
+  }
+
+  .content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 600px;
+    background-image: url('/images/background-login.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    h3 {
+      padding: 30px;
+      font-size: 26px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        width: 100%;
+
+        input {
+          width: 100%;
+          background-color: rgba($color: #f1f1f1, $alpha: 0.55);
+          border-radius: 6px;
+          border: none;
+          padding: 10px;
+        }
+      }
+      button {
+        background-color: rgba($color: #115bb6, $alpha: 0.8);
+        color: white;
+        border-radius: 18px;
+        width: 100%;
+        margin-top: 50px;
+        height: 40px;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 640px) {
   .header {
     height: 60px;
