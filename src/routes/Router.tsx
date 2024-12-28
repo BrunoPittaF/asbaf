@@ -7,6 +7,7 @@ import Legislation from '../pages/legislation/Legislation';
 import Legal from '../pages/Legal/Legal';
 import Status from '../pages/Status/Status';
 import Join from '../pages/Join';
+import Notice from '../pages/Notice/Notice';
 
 export function Router() {
   return (
@@ -20,6 +21,7 @@ export function Router() {
         <Route path="/estatuto" element={<Status />} />
         <Route path="/associe-se" element={<Join />} />
       </Route>
+      <Route path="/notice" element={<Notice />} />
     </Routes>
   );
 }

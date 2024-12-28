@@ -94,7 +94,7 @@ const Join: React.FC = () => {
         <h2>Dados Pessoais</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
-            <label>Selecione uma imagem:</label>
+            <label>Anexe sua foto:</label>
             <input
               type="file"
               accept="image/*"
@@ -176,11 +176,11 @@ const Join: React.FC = () => {
             <input {...register('facebook')} />
           </div>
 
-          <h3>Parentes</h3>
+          <h3>Dependentes</h3>
           {fields.map((field, index) => (
             <div className={styles.parentsContainer} key={field.id}>
               <div>
-                <label>CPF do parente:</label>
+                <label>CPF do dependente:</label>
                 <input {...register(`relatives.${index}.cpf`)} />
                 <p>{errors.relatives?.[index]?.cpf?.message}</p>
               </div>

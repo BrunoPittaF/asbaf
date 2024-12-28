@@ -44,7 +44,7 @@ const Carroussel: React.FC<ICarroussel> = ({ title }: ICarroussel) => {
 
   const settings = {
     infinite: true,
-    speed: 1000,
+    speed: 6000,
     slidesToShow: 3,
     slidesToScroll: 1,
     arrows: true,
@@ -70,6 +70,7 @@ const Carroussel: React.FC<ICarroussel> = ({ title }: ICarroussel) => {
       },
       {
         breakpoint: 480,
+        speed: 100,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -86,26 +87,32 @@ const Carroussel: React.FC<ICarroussel> = ({ title }: ICarroussel) => {
 
       <div className={styles.container}>
         <h2>{title}</h2>
-        <Slider {...settings}>
-          <a href="#" className={styles.card}>
-            <img src="/images/nota-de-esclarecimento.jpg" alt="card" />
-          </a>
-          <a href="#" className={styles.card}>
-            <img src="/images/nota-de-esclarecimento.jpg" alt="card" />
-          </a>
-          <a href="#" className={styles.card}>
-            <img src="/images/nota-de-esclarecimento.jpg" alt="card" />
-          </a>
-          <a href="#" className={styles.card}>
-            <img src="/images/nota-de-esclarecimento.jpg" alt="card" />
-          </a>
-          <a href="#" className={styles.card}>
-            <img src="/images/nota-de-esclarecimento.jpg" alt="card" />
-          </a>
-          <a href="#" className={styles.card}>
-            <img src="/images/nota-de-esclarecimento.jpg" alt="card" />
-          </a>
-        </Slider>
+        {!pageIsMobile() && (
+          <Slider {...settings}>
+            <a href="#" className={styles.card}>
+              {/* <img src="/images/nota-de-esclarecimento.jpg" alt="card" /> */}
+            </a>
+            <a href="/notice" className={styles.card}>
+              <img src="/images/nota-de-esclarecimento.jpg" alt="card" />
+            </a>
+            <a href="#" className={styles.card}>
+              {/* <img src="/images/nota-de-esclarecimento.jpg" alt="card" /> */}
+            </a>
+
+            <a href="#" className={styles.card}>
+              {/* <img src="/images/nota-de-esclarecimento.jpg" alt="card" /> */}
+            </a>
+            <a href="#" className={styles.card}>
+              {/* <img src="/images/nota-de-esclarecimento.jpg" alt="card" /> */}
+            </a>
+            <a href="#" className={styles.card}>
+              {/* <img src="/images/nota-de-esclarecimento.jpg" alt="card" /> */}
+            </a>
+          </Slider>
+        )}
+        {pageIsMobile() && (
+          <img className={styles.imageMobile} src="/images/nota-de-esclarecimento.jpg" alt="card" />
+        )}
       </div>
     </section>
   );
