@@ -21,8 +21,8 @@ const paths: IPath[] = [
 ];
 
 const listPaths: Record<string, GlobImport> = {
-  'fim-de-ano-2021': import.meta.glob('/public/images/fim-de-ano-2021/*.{png,jpg,jpeg,svg}'),
-  'homenagem-giovanna-2023': import.meta.glob('/public/images/homenagem-giovanna-2023/*.{png,jpg,jpeg,svg}'),
+  'fim-de-ano-2021': import.meta.glob('/images/fim-de-ano-2021/*.{png,jpg,jpeg,svg}'),
+  'homenagem-giovanna-2023': import.meta.glob('/images/homenagem-giovanna-2023/*.{png,jpg,jpeg,svg}'),
 };
 
 const Directors: React.FC = () => {
