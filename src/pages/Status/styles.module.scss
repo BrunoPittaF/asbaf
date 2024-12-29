@@ -1,7 +1,8 @@
 .main {
   padding-top: 30px;
-  background-image: url('/images/bg.png');
+  // background-image: url('/images/bg.png');
   background-repeat: repeat;
+  min-height: 600px;
 
   .container {
     display: flex;
@@ -23,6 +24,9 @@
       font-weight: 400;
       font-size: 18px;
       margin-top: 12px;
+      a {
+        margin-right: 10px;
+      }
     }
   }
 }

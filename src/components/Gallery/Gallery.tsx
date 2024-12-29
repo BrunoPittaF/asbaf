@@ -6,6 +6,8 @@ interface GalleryProps {
 }
 
 const Gallery: React.FC<GalleryProps> = ({ images }) => {
+  // console.log(images);
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeImageIndex, setActiveImageIndex] = useState<string>('');
 

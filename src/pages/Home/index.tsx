@@ -12,7 +12,7 @@ type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 export function Home() {
-  const [value, onChange] = useState<Value>(new Date(2024, 11, 27));
+  const [value, onChange] = useState<Value>(new Date());
   return (
     <>
       <main className={styles.main}>
