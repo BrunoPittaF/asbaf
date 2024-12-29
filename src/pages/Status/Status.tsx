@@ -8,7 +8,7 @@ const Status: React.FC = () => {
         <h2>Estatuto</h2>
 
         <p>
-          <a href="/files/Estatuto-asbaf.pdf" download="Estatuto_pós mudança nomeclatura.pdf">
+          <a href="/src/assets/files/Estatuto-asbaf.pdf" download="Estatuto_pós mudança nomeclatura.pdf">
             Clique aqui
           </a>
           para baixar o Estatuto

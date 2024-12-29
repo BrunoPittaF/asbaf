@@ -21,8 +21,10 @@ const paths: IPath[] = [
 ];
 
 const listPaths: Record<string, GlobImport> = {
-  'fim-de-ano-2021': import.meta.glob('/images/fim-de-ano-2021/*.{png,jpg,jpeg,svg}'),
-  'homenagem-giovanna-2023': import.meta.glob('/images/homenagem-giovanna-2023/*.{png,jpg,jpeg,svg}'),
+  'fim-de-ano-2021': import.meta.glob('/src/assets/images/fim-de-ano-2021/*.{png,jpg,jpeg,svg}'),
+  'homenagem-giovanna-2023': import.meta.glob(
+    '/src/assets/images/homenagem-giovanna-2023/*.{png,jpg,jpeg,svg}'
+  ),
 };
 
 const Directors: React.FC = () => {
@@ -30,6 +32,7 @@ const Directors: React.FC = () => {
 
   function changeImagePathGallery(pathImage: keyof typeof listPaths) {
     const imagesGlob = listPaths[pathImage];
+    console.log(listPaths);
     if (!imagesGlob) return;
 
     const imagesArray: string[] = [];
