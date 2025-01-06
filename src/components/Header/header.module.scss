@@ -81,9 +81,28 @@
     }
   }
 
+  .legislation_content {
+    width: 23%;
+    background-image: url('/images/bg-menu.png');
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding-top: 92px;
+    z-index: 999999;
+
+    button {
+      @include partials.blue-button;
+      background-color: rgba($color: vars.$blue, $alpha: 0.8);
+      max-width: 300px;
+      height: 42px;
+      font-size: 18px;
+    }
+  }
+
   .menu_curtain {
     background-color: rgba($color: #0b0a0a, $alpha: 0.74);
-    width: 100%;
     height: 100%;
     z-index: 999999;
   }

@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import styles from './header.module.scss';
 import { FiMenu } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
+import { pageIsMobile } from '../../Utils/Utils';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [legislationIsOpen, setLegislationOpen] = useState<boolean>(false);
   const [loginIsOpen, setLoginIsOpen] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -44,10 +46,13 @@ const Header: React.FC = () => {
       </header>
       {isOpen && (
         <div className={styles.menu_suspended}>
-          <div className={styles.menu_suspended_content}>
+          <div
+            style={{ width: !pageIsMobile() ? '70%' : legislationIsOpen ? '40%' : '70%' }}
+            className={styles.menu_suspended_content}
+          >
             <button onClick={() => handleButton('/')}>Home</button>
             <button onClick={() => handleButton('/diretores')}>Diretorias</button>
-            <button onClick={() => handleButton('/legislacao')}>Legislação</button>
+            <button onClick={() => setLegislationOpen((oldState) => !oldState)}>Legislação</button>
             <button onClick={() => handleButton('/ultimas-noticias')}>Últimas Noticias</button>
             <button onClick={() => handleButton('/cursos-e-aperfeicoamentos')}>
               Cursos e aperfeiçoamentos
@@ -61,7 +66,20 @@ const Header: React.FC = () => {
             </button>
             <button onClick={() => handleButton('/seja-parceiro-asbaf')}>Seja parceiro ASBAF</button>
           </div>
-          <div className={styles.menu_curtain} onClick={ActiveMenuHamburguer}></div>
+          {legislationIsOpen && (
+            <div style={{ width: !pageIsMobile() ? '23%' : '40%' }} className={styles.legislation_content}>
+              <button onClick={() => handleButton('/legislacao/0')}>Lei ordinaria 6149, 2002</button>
+              <button onClick={() => handleButton('/legislacao/1')}>Lei ordinaria 8629, 2014</button>
+              <button onClick={() => handleButton('/legislacao/2')}>Lei complementar 80, 2022</button>
+              <button onClick={() => handleButton('/legislacao/3')}>Lei ordinaria 9808, 2024</button>
+            </div>
+          )}
+
+          <div
+            style={{ width: !pageIsMobile() ? (legislationIsOpen ? '54%' : '100%') : '20%' }}
+            className={styles.menu_curtain}
+            onClick={ActiveMenuHamburguer}
+          ></div>
         </div>
       )}
 

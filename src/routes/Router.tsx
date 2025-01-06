@@ -16,7 +16,7 @@ export function Router() {
         <Route index element={<Home />} />
         <Route path="/diretores" element={<Directors />} />
         <Route path="/galeria" element={<Gallery />} />
-        <Route path="/legislacao" element={<Legislation />} />
+        <Route path="/legislacao/:id" element={<Legislation />} />
         <Route path="/juridico" element={<Legal />} />
         <Route path="/estatuto" element={<Status />} />
         <Route path="/associe-se" element={<Join />} />
