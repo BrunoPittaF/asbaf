@@ -8,20 +8,23 @@ import Legal from '../pages/Legal/Legal';
 import Status from '../pages/Status/Status';
 import Join from '../pages/Join';
 import Notice from '../pages/Notice/Notice';
+import { UseGlobalContext } from '../context/useGlobalContext';
 
 export function Router() {
   return (
-    <Routes>
-      <Route path="/" element={<DefaultLayout />}>
-        <Route index element={<Home />} />
-        <Route path="/diretores" element={<Directors />} />
-        <Route path="/galeria" element={<Gallery />} />
-        <Route path="/legislacao/:id" element={<Legislation />} />
-        <Route path="/juridico" element={<Legal />} />
-        <Route path="/estatuto" element={<Status />} />
-        <Route path="/associe-se" element={<Join />} />
-      </Route>
-      <Route path="/notice" element={<Notice />} />
-    </Routes>
+    <UseGlobalContext>
+      <Routes>
+        <Route path="/" element={<DefaultLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/diretores" element={<Directors />} />
+          <Route path="/galeria" element={<Gallery />} />
+          <Route path="/legislacao/:id" element={<Legislation />} />
+          <Route path="/juridico" element={<Legal />} />
+          <Route path="/estatuto" element={<Status />} />
+          <Route path="/associe-se" element={<Join />} />
+        </Route>
+        <Route path="/notice" element={<Notice />} />
+      </Routes>
+    </UseGlobalContext>
   );
 }

@@ -35,6 +35,31 @@
       }
     }
 
+    .user_logged {
+      display: flex;
+      align-items: center;
+
+      span {
+        color: #115bb6;
+        font-weight: bold;
+        width: max-content;
+        margin-right: 10px;
+      }
+
+      .image_content {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        border: none;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          object-fit: contain;
+        }
+      }
+    }
+
     button {
       @include partials.button;
       width: 130px;
@@ -174,7 +199,7 @@
 
 @media screen and (max-width: 640px) {
   .header {
-    height: 60px;
+    height: 70px;
     .content {
       padding: 0px 30px;
 

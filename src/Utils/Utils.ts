@@ -36,3 +36,14 @@ export const pageIsMobile = () => {
     return false;
   }
 }
+
+export const saveToken = (token: string) => {
+  localStorage.setItem('authToken', token);
+}
+
+export const getToken = () => {
+  const authToken = localStorage.getItem('authToken');
+
+  return authToken;
+
+}

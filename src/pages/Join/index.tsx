@@ -4,6 +4,9 @@ import styles from './styles.module.scss';
 import { useForm, useFieldArray } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { baseURL } from '../../api';
+import axios from 'axios';
+import { useLoadingContext } from '../../hooks/useLoading';
 // import axios from "axios";
 
 // Schema de validação com Yup
@@ -19,7 +22,7 @@ const schema = yup.object({
   cellSefaz: yup.string().optional(),
   sectorSefaz: yup.string().optional(),
   instagram: yup.string().optional(),
-  theads: yup.string().optional(),
+  threads: yup.string().optional(),
   facebook: yup.string().optional(),
   image: yup
     .mixed<FileList>()
@@ -57,6 +60,8 @@ const Join: React.FC = () => {
     },
   });
 
+  const { setIsLoading } = useLoadingContext();
+
   const { fields, append, remove } = useFieldArray({
     control,
     name: 'relatives',
@@ -72,7 +77,9 @@ const Join: React.FC = () => {
     setNumberChildren((oldValue) => oldValue + 1);
   };
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = async (data: FormValues, e: any) => {
+    e.preventDefault();
+    setIsLoading(true);
     try {
       if (!data.image || data.image.length === 0) {
         return;
@@ -80,11 +87,23 @@ const Join: React.FC = () => {
 
       const formData = new FormData();
       formData.append('image', data.image[0]);
+      formData.append('cpf', data.cpf);
+      formData.append('name', data.name);
+      formData.append('email', data.email);
+      formData.append('password', data.password);
+      formData.append('address', data.address);
+      formData.append('birthDate', String(data.birthDate));
+      formData.append('cellMobile', data.cellMobile);
+      formData.append('cellphone', data.cellphone);
 
-      alert('Dados enviados com sucesso!');
+      const response = await axios.post(`${baseURL}/user/create`, formData);
+      const responseData = await response.data;
+
+      console.log(responseData);
     } catch (error) {
       console.error(error);
-      alert('Erro ao enviar os dados');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -168,7 +187,7 @@ const Join: React.FC = () => {
 
           <div>
             <label>Threads:</label>
-            <input {...register('theads')} />
+            <input {...register('threads')} />
           </div>
 
           <div>

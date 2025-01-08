@@ -3,13 +3,65 @@ import React, { useState } from 'react';
 import styles from './header.module.scss';
 import { FiMenu } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
-import { pageIsMobile } from '../../Utils/Utils';
+import { pageIsMobile, saveToken } from '../../Utils/Utils';
+import { baseURL } from '../../api';
+import { useForm } from 'react-hook-form';
+import { useLoadingContext } from '../../hooks/useLoading';
+import { useGlobalProvider } from '../../hooks/useGlobalProvider';
+
+interface LoginFormInputs {
+  cpf: string;
+  password: string;
+}
 
 const Header: React.FC = () => {
+  const { register, handleSubmit } = useForm<LoginFormInputs>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [legislationIsOpen, setLegislationOpen] = useState<boolean>(false);
   const [loginIsOpen, setLoginIsOpen] = useState<boolean>(false);
+
+  const { setIsLoading } = useLoadingContext();
+  const { userState, setUserState } = useGlobalProvider();
   const navigate = useNavigate();
+
+  const onSubmit = async (data: LoginFormInputs) => {
+    setIsLoading(true);
+    try {
+      const object = {
+        cpf: data.cpf,
+        password: data.password,
+      };
+      const response = await fetch(`${baseURL}/user/login`, {
+        method: 'POST',
+        body: JSON.stringify(object),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const json = await response.json();
+
+      if (json.token) {
+        saveToken(json.token);
+      }
+
+      const localUser = {
+        id: json.user.id,
+        Image: baseURL + json.user.Image,
+        name: json.user.name.split(' ')[0],
+      };
+
+      setUserState(localUser);
+
+      localStorage.setItem('user', JSON.stringify(localUser));
+
+      setLoginIsOpen(false);
+    } catch (error: any) {
+      console.error('erro', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   function associate() {
     setIsOpen(false);
@@ -36,12 +88,23 @@ const Header: React.FC = () => {
               <img src="/images/logo.png" />
             </Link>
 
-            <a onClick={() => associate()} href="#">
-              Área para associado
-            </a>
+            {!userState.name && (
+              <a onClick={() => associate()} href="#">
+                Área para associado
+              </a>
+            )}
           </div>
 
-          <button onClick={() => handleButton('/associe-se')}>Associe-se</button>
+          {userState.name ? (
+            <p className={styles.user_logged}>
+              <span>Bem vindo, {userState.name}</span>
+              <div className={styles.image_content}>
+                <img src={userState.Image} alt="" />
+              </div>
+            </p>
+          ) : (
+            <button onClick={() => handleButton('/associe-se')}>Associe-se</button>
+          )}
         </div>
       </header>
       {isOpen && (
@@ -60,10 +123,16 @@ const Header: React.FC = () => {
             <button onClick={() => handleButton('/juridico')}>Jurídico</button>
             <button onClick={() => handleButton('/galeria')}>Galeria</button>
             <button onClick={() => handleButton('/estatuto')}>Estatuto</button>
-            <a href="#">Área para associado</a>
-            <button className={styles.button_join} onClick={() => handleButton('/associe-se')}>
-              Associe-se
-            </button>
+
+            {!userState.name && (
+              <>
+                <a href="#">Área para associado</a>
+                <button className={styles.button_join} onClick={() => handleButton('/associe-se')}>
+                  Associe-se
+                </button>
+              </>
+            )}
+
             <button onClick={() => handleButton('/seja-parceiro-asbaf')}>Seja parceiro ASBAF</button>
           </div>
           {legislationIsOpen && (
@@ -76,7 +145,15 @@ const Header: React.FC = () => {
           )}
 
           <div
-            style={{ width: !pageIsMobile() ? (legislationIsOpen ? '54%' : '100%') : '20%' }}
+            style={{
+              width: !pageIsMobile()
+                ? legislationIsOpen
+                  ? '54%'
+                  : '100%'
+                : legislationIsOpen
+                ? '20%'
+                : '100%',
+            }}
             className={styles.menu_curtain}
             onClick={ActiveMenuHamburguer}
           ></div>
@@ -89,14 +166,26 @@ const Header: React.FC = () => {
           <div className={styles.content}>
             <h3>Login</h3>
 
-            <form action="#">
+            <form onSubmit={handleSubmit(onSubmit)}>
               <div>
                 <label htmlFor="cpf">CPF</label>
-                <input type="text" placeholder="cpf" />
+                <input
+                  type="text"
+                  placeholder="cpf"
+                  {...register('cpf', {
+                    required: 'O CPF é obrigatório',
+                  })}
+                />
               </div>
               <div>
                 <label htmlFor="senha">Senha</label>
-                <input type="password" placeholder="senha" />
+                <input
+                  type="password"
+                  placeholder="senha"
+                  {...register('password', {
+                    required: 'A senha é obrigatória',
+                  })}
+                />
               </div>
               <button>Login</button>
             </form>
