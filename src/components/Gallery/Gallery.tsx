@@ -6,8 +6,6 @@ interface GalleryProps {
 }
 
 const Gallery: React.FC<GalleryProps> = ({ images }) => {
-  // console.log(images);
-
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [activeImageIndex, setActiveImageIndex] = useState<string>('');
 
@@ -48,6 +46,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
             <img
               onClick={prevImage}
               className={styles.arrow}
+              id={styles.left}
               style={{ cursor: activeImageIndex !== images[0] ? 'pointer' : 'not-allowed' }}
               src="/images/backArrow.png"
               alt="seta para voltar"
@@ -55,6 +54,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
 
             <img src={activeImageIndex} alt="" />
             <img
+              id={styles.right}
               onClick={nextImage}
               className={styles.arrow}
               src="/images/nextArrow.png"
