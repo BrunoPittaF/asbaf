@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styles from './header.module.scss';
 import { FiMenu } from 'react-icons/fi';
 import { Link, useNavigate } from 'react-router-dom';
-import { pageIsMobile, saveToken } from '../../Utils/Utils';
+import { pageIsMobile, saveToken, saveUserLogged } from '../../Utils/Utils';
 import { baseURL } from '../../api';
 import { useForm } from 'react-hook-form';
 import { useLoadingContext } from '../../hooks/useLoading';
@@ -19,9 +19,10 @@ const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [legislationIsOpen, setLegislationOpen] = useState<boolean>(false);
   const [loginIsOpen, setLoginIsOpen] = useState<boolean>(false);
+  const [optionsIsOpen, setOptionsIsOpen] = useState<boolean>(false);
 
   const { setIsLoading } = useLoadingContext();
-  const { userState, setUserState } = useGlobalProvider();
+  const { userState, setUserState, setLoggedUser } = useGlobalProvider();
   const navigate = useNavigate();
 
   const onSubmit = async (data: LoginFormInputs) => {
@@ -47,11 +48,14 @@ const Header: React.FC = () => {
 
       const localUser = {
         id: json.user.id,
-        Image: baseURL + json.user.Image,
+        Image: baseURL + '/' + json.user.Image,
         name: json.user.name.split(' ')[0],
       };
 
       setUserState(localUser);
+
+      setLoggedUser(json.user);
+      saveUserLogged(json.user);
 
       localStorage.setItem('user', JSON.stringify(localUser));
 
@@ -77,6 +81,16 @@ const Header: React.FC = () => {
     setIsOpen((oldState) => !oldState);
   }
 
+  function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setUserState({
+      id: 999999,
+      Image: '',
+      name: '',
+    });
+  }
+
   return (
     <>
       <header className={styles.header}>
@@ -96,11 +110,17 @@ const Header: React.FC = () => {
           </div>
 
           {userState.name ? (
-            <p className={styles.user_logged}>
+            <p onClick={() => setOptionsIsOpen((oldState) => !oldState)} className={styles.user_logged}>
               <span>Bem vindo, {userState.name}</span>
               <div className={styles.image_content}>
                 <img src={userState.Image} alt="" />
               </div>
+              {optionsIsOpen && (
+                <div className={styles.user_logged_options}>
+                  <button onClick={() => handleButton('/associe-se')}>Perfil</button>
+                  <button onClick={() => logout()}>Logout</button>
+                </div>
+              )}
             </p>
           ) : (
             <button onClick={() => handleButton('/associe-se')}>Associe-se</button>

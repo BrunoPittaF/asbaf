@@ -38,6 +38,8 @@
     .user_logged {
       display: flex;
       align-items: center;
+      position: relative;
+      cursor: pointer;
 
       span {
         color: #115bb6;
@@ -56,6 +58,27 @@
         img {
           width: 100%;
           object-fit: contain;
+        }
+      }
+
+      .user_logged_options {
+        position: absolute;
+        bottom: -23px;
+        right: 0;
+        background-color: white;
+        box-shadow: 1px 0px 5px black;
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+
+        button {
+          background-color: white;
+          border: none;
+          width: auto;
+          height: auto;
+          padding: 4px;
+          font-size: 14px;
+          cursor: pointer;
         }
       }
     }
@@ -210,6 +233,14 @@
         justify-content: space-between;
         a {
           display: none;
+        }
+      }
+
+      .user_logged {
+        .user_logged_options {
+          button {
+            display: block;
+          }
         }
       }
     }

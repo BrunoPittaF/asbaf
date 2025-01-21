@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { baseURL } from '../../api';
 import axios from 'axios';
 import { useLoadingContext } from '../../hooks/useLoading';
-// import axios from "axios";
+import { getToken, getUserLogged } from '../../Utils/Utils';
 
 // Schema de validação com Yup
 const schema = yup.object({
@@ -37,7 +37,7 @@ const schema = yup.object({
     .array(
       yup.object({
         cpf: yup.string().required('CPF do parente é obrigatório'),
-        relationship: yup.string().required('Relacionamento é obrigatório'),
+        position: yup.number().required('Relacionamento é obrigatório'),
         name: yup.string().required('Nome do parente é obrigatório'),
       })
     )
@@ -47,6 +47,8 @@ const schema = yup.object({
 type FormValues = yup.InferType<typeof schema>;
 
 const Join: React.FC = () => {
+  const userLogged = getUserLogged();
+  // const userToken = getToken();
   const [numberChildren, setNumberChildren] = useState<number>(2);
   const {
     control,
@@ -56,6 +58,20 @@ const Join: React.FC = () => {
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
     defaultValues: {
+      cpf: userLogged.cpf,
+      email: userLogged.email,
+      password: '',
+      address: userLogged.address,
+      birthDate: new Date(userLogged.birthDate),
+      name: userLogged.name,
+      cellphone: userLogged.cellphone,
+      cellMobile: userLogged.cellMobile,
+      cellSefaz: userLogged.cellSefaz,
+      sectorSefaz: userLogged.sectorSefaz,
+      instagram: userLogged.instagram,
+      threads: userLogged.threads,
+      facebook: userLogged.facebook,
+
       relatives: [],
     },
   });
@@ -73,7 +89,7 @@ const Join: React.FC = () => {
   };
 
   const addParent = () => {
-    append({ cpf: '', relationship: '', name: '' });
+    append({ cpf: '', position: 2, name: '' });
     setNumberChildren((oldValue) => oldValue + 1);
   };
 
@@ -96,10 +112,46 @@ const Join: React.FC = () => {
       formData.append('cellMobile', data.cellMobile);
       formData.append('cellphone', data.cellphone);
 
-      const response = await axios.post(`${baseURL}/user/create`, formData);
-      const responseData = await response.data;
+      formData.append('instagram', data.instagram || '');
+      formData.append('facebook', data.facebook || '');
+      formData.append('threads', data.threads || '');
+      formData.append('cellSefaz', data.cellSefaz || '');
+      formData.append('sectorSefaz', data.sectorSefaz || '');
 
-      console.log(responseData);
+      if (data.relatives && data.relatives.length > 0) {
+        formData.append('relatives', JSON.stringify(data.relatives));
+      }
+
+      if (userLogged.id) {
+        // const response = await axios.put(`${baseURL}/user/edit/${userLogged.id}`, {
+        //   headers: {
+        //     Authorization: `${userToken}`,
+        //     'Content-Type': 'application/json',
+        //   },
+        //   data: formData,
+        // });
+        // const responseData = await response.data;
+
+        // console.log(responseData);
+
+        // return responseData;
+
+        const response = await fetch(`${baseURL}/user/edit/${userLogged.id}`, {
+          method: 'PUT', // Ou POST/PUT conforme necessário
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `${getToken()}`, // Enviando o token no cabeçalho
+          },
+          body: JSON.stringify(data),
+        });
+
+        const result = await response.json();
+        console.log(result);
+      } else {
+        const response = await axios.post(`${baseURL}/user/create`, formData);
+        const responseData = await response.data;
+        return responseData;
+      }
     } catch (error) {
       console.error(error);
     } finally {
@@ -206,12 +258,12 @@ const Join: React.FC = () => {
 
               <div>
                 <label>Relacionamento:</label>
-                <select className={styles.selectInput} {...register(`relatives.${index}.relationship`)}>
+                <select className={styles.selectInput} {...register(`relatives.${index}.position`)}>
                   <option value="">Selecione</option>
                   <option value="2">Cônjuge</option>
                   <option value={numberChildren}>Filho</option>
                 </select>
-                <p>{errors.relatives?.[index]?.relationship?.message}</p>
+                <p>{errors.relatives?.[index]?.position?.message}</p>
               </div>
 
               <div>

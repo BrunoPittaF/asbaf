@@ -10,17 +10,32 @@
     justify-content: center;
     align-items: center;
 
-    h2 {
-      font-weight: bold;
-      font-size: 60px;
-      color: #115bb6;
-      text-align: center;
+    .header_content {
       margin-bottom: 128px;
-      font-family: 'Afacad Flux', 'Inter';
+      h2 {
+        font-weight: bold;
+        font-size: 60px;
+        color: #115bb6;
+        text-align: center;
+        margin-bottom: 40px;
+        font-family: 'Afacad Flux', 'Inter';
+      }
+      img {
+        max-width: 900px;
+        max-height: 900px;
+      }
     }
   }
 
   @media screen and (max-width: 640px) {
     min-height: auto;
+
+    .container {
+      .header_content {
+        img {
+          max-width: 100%;
+        }
+      }
+    }
   }
 }

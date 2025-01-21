@@ -1,3 +1,5 @@
+import { ILoggedUser } from '../interfaces/global';
+
 export const pageIsMobile = () => {
   try {
     const isMobile = {
@@ -45,5 +47,16 @@ export const getToken = () => {
   const authToken = localStorage.getItem('authToken');
 
   return authToken;
+
+}
+
+export const saveUserLogged = (user: ILoggedUser) => {
+  localStorage.setItem('userLogged', JSON.stringify(user));
+}
+
+export const getUserLogged = () => {
+  const userLogged = localStorage.getItem('userLogged');
+
+  return JSON.parse(userLogged || '{}');
 
 }

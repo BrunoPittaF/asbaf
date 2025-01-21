@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IUserStateContext } from '../interfaces/global';
+import { ILoggedUser, IUserStateContext } from '../interfaces/global';
 
 export function useGlobalProvider() {
   const backupUser = {
@@ -12,9 +12,28 @@ export function useGlobalProvider() {
   );
 
   const [userState, setUserState] = useState<IUserStateContext>(initialState);
+  const [loggedUser, setLoggedUser] = useState<ILoggedUser>({
+    id: 0,
+    cpf: '',
+    email: '',
+    address: '',
+    birthDate: '',
+    name: '',
+    cellphone: '',
+    cellMobile: '',
+    cellSefaz: '',
+    sectorSefaz: '',
+    numberAssociated: '',
+    instagram: '',
+    threads: '',
+    facebook: '',
+    Image: '',
+  });
 
   return {
     userState,
     setUserState,
+    loggedUser,
+    setLoggedUser,
   };
 }
