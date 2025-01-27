@@ -123,19 +123,6 @@ const Join: React.FC = () => {
       }
 
       if (userLogged.id) {
-        // const response = await axios.put(`${baseURL}/user/edit/${userLogged.id}`, {
-        //   headers: {
-        //     Authorization: `${userToken}`,
-        //     'Content-Type': 'application/json',
-        //   },
-        //   data: formData,
-        // });
-        // const responseData = await response.data;
-
-        // console.log(responseData);
-
-        // return responseData;
-
         const response = await fetch(`${baseURL}/user/edit/${userLogged.id}`, {
           method: 'PUT', // Ou POST/PUT conforme necessário
           headers: {
@@ -146,7 +133,7 @@ const Join: React.FC = () => {
         });
 
         const result = await response.json();
-        console.log(result);
+        console.log('result', result);
       } else {
         const response = await axios.post(`${baseURL}/user/create`, formData);
         const responseData = await response.data;

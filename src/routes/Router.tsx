@@ -9,6 +9,7 @@ import Status from '../pages/Status/Status';
 import Join from '../pages/Join';
 import Notice from '../pages/Notice/Notice';
 import { UseGlobalContext } from '../context/useGlobalContext';
+import Partner from '../pages/Partner';
 
 export function Router() {
   return (
@@ -22,6 +23,7 @@ export function Router() {
           <Route path="/juridico" element={<Legal />} />
           <Route path="/estatuto" element={<Status />} />
           <Route path="/associe-se" element={<Join />} />
+          <Route path="/seja-parceiro-asbaf" element={<Partner />} />
         </Route>
         <Route path="/notice" element={<Notice />} />
       </Routes>
