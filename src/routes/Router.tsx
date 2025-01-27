@@ -10,6 +10,7 @@ import Join from '../pages/Join';
 import Notice from '../pages/Notice/Notice';
 import { UseGlobalContext } from '../context/useGlobalContext';
 import Partner from '../pages/Partner';
+import Admin from '../pages/Admin';
 
 export function Router() {
   return (
@@ -26,6 +27,7 @@ export function Router() {
           <Route path="/seja-parceiro-asbaf" element={<Partner />} />
         </Route>
         <Route path="/notice" element={<Notice />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </UseGlobalContext>
   );
