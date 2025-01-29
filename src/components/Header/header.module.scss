@@ -137,7 +137,7 @@
     flex-direction: column;
     align-items: center;
     gap: 40px;
-    padding-top: 92px;
+    padding-top: calc(92px + 162px);
     z-index: 999999;
 
     button {
@@ -265,6 +265,9 @@
       a {
         display: block;
       }
+    }
+    .legislation_content {
+      padding-top: calc(10px + 42px + 40px + 42px);
     }
 
     .menu_curtain {
