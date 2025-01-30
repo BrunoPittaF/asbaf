@@ -18,11 +18,28 @@ const paths: IPath[] = [
     name: 'Homenagem à Secretária da Fazenda: Giovanna Victer (2023)',
     pathImage: 'homenagem-giovanna-2023',
   },
+  {
+    name: 'Assembleia Geral 15/10',
+    pathImage: 'assembleia-geral-15-10',
+  },
+  {
+    name: 'Confraternização 2024',
+    pathImage: 'confraternizacao-2024',
+  },
+  {
+    name: 'Comemoração Dia do Fisco 2024',
+    pathImage: 'confraternizacao-dia-do-fisco-2024',
+  },
 ];
 
 const listPaths: Record<string, GlobImport> = {
   'fim-de-ano-2021': import.meta.glob('/public/images/fim-de-ano-2021/*.{png,jpg,jpeg,svg}'),
   'homenagem-giovanna-2023': import.meta.glob('/public/images/homenagem-giovanna-2023/*.{png,jpg,jpeg,svg}'),
+  'assembleia-geral-15-10': import.meta.glob('/public/images/assembleia-geral-15-10/*.{png,jpg,jpeg,svg}'),
+  'confraternizacao-2024': import.meta.glob('/public/images/confraternizacao-2024/*.{png,jpg,jpeg,svg}'),
+  'confraternizacao-dia-do-fisco-2024': import.meta.glob(
+    '/public/images/confraternizacao-dia-do-fisco-2024/*.{png,jpg,jpeg,svg}'
+  ),
 };
 
 const Directors: React.FC = () => {

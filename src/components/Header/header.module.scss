@@ -99,6 +99,7 @@
   position: fixed;
   top: 0;
   display: flex;
+  background-color: rgba(11, 10, 10, 0.74);
 
   .menu_suspended_content {
     width: 23%;
@@ -137,7 +138,8 @@
     flex-direction: column;
     align-items: center;
     gap: 40px;
-    padding-top: calc(92px + 162px);
+    margin-top: calc(92px + 162px);
+    padding-top: 10px;
     z-index: 999999;
 
     button {
@@ -150,7 +152,7 @@
   }
 
   .menu_curtain {
-    background-color: rgba($color: #0b0a0a, $alpha: 0.74);
+    // background-color: rgba($color: #0b0a0a, $alpha: 0.74);
     height: 100%;
     z-index: 999999;
   }
@@ -267,7 +269,7 @@
       }
     }
     .legislation_content {
-      padding-top: calc(10px + 42px + 40px + 42px);
+      margin-top: calc(10px + 42px + 40px + 42px);
     }
 
     .menu_curtain {
