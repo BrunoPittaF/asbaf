@@ -26,7 +26,7 @@ export function Router() {
           <Route path="/associe-se" element={<Join />} />
           <Route path="/seja-parceiro-asbaf" element={<Partner />} />
         </Route>
-        <Route path="/notice" element={<Notice />} />
+        <Route path="/notice/:id" element={<Notice />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </UseGlobalContext>

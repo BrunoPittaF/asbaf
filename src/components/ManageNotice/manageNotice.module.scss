@@ -1,0 +1,40 @@
+.formManageNotice {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .formDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+
+    input {
+      height: 30px;
+      padding: 4px;
+      outline: none;
+      border: 1px solid black;
+      border-radius: 4px;
+
+      &:not([type='file']) {
+        border-radius: 4px;
+      }
+    }
+  }
+
+  button {
+    background-color: #bb9b60;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    transition: filter 0.2s;
+    width: 300px;
+    height: 41px;
+    font-size: 14px;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+  }
+}

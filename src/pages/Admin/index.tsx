@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ManageNotice from '../../components/ManageNotice';
 
+import styles from './styles.module.scss';
+import ListNotice from '../../components/ListNotice/ListNotice';
+
 //add noticias, parceiros, código do instagram, imagens diretorias, imagens galeria
 
 // Validation schema
@@ -11,6 +14,7 @@ type IAdminTitlePage = {
   instagram: string;
   diretorias: string;
   galeria: string;
+  listagem: string;
 };
 
 const adminTitlePage: IAdminTitlePage = {
@@ -19,6 +23,7 @@ const adminTitlePage: IAdminTitlePage = {
   instagram: 'Postagem Instagram',
   diretorias: 'Adicionar Diretoria',
   galeria: 'Adicionar Imagem',
+  listagem: 'Lista de Notícias',
 };
 
 const adminContent = {
@@ -27,6 +32,7 @@ const adminContent = {
   instagram: <ManageNotice />,
   diretorias: <ManageNotice />,
   galeria: <ManageNotice />,
+  listagem: <ListNotice />,
 };
 
 const Admin: React.FC = () => {
@@ -59,11 +65,14 @@ const Admin: React.FC = () => {
   }
 
   return (
-    <>
+    <section className={styles.page}>
       <header>
         <ul>
           <li>
             <button onClick={() => setTitlePage('noticias')}>Criar Noticias</button>
+          </li>
+          <li>
+            <button onClick={() => setTitlePage('listagem')}>Lista de Notícias</button>
           </li>
           <li>
             <button onClick={() => setTitlePage('parceiros')}>Adicionar Parceiro</button>
@@ -83,7 +92,7 @@ const Admin: React.FC = () => {
         <h1 className="">{adminTitlePage[titlePage]}</h1>
         {adminContent[titlePage]}
       </div>
-    </>
+    </section>
   );
 };
 

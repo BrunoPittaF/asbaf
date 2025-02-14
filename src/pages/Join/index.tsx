@@ -48,8 +48,8 @@ type FormValues = yup.InferType<typeof schema>;
 
 const Join: React.FC = () => {
   const userLogged = getUserLogged();
-  // const userToken = getToken();
   const [numberChildren, setNumberChildren] = useState<number>(2);
+  const [consentiment, setConsentiment] = useState<boolean>(false);
   const {
     control,
     register,
@@ -269,8 +269,18 @@ const Join: React.FC = () => {
             Adicionar Parente
           </button>
 
+          <div className={styles.checkboxValidation}>
+            <input
+              type="checkbox"
+              checked={consentiment}
+              onChange={() => setConsentiment((oldState) => !oldState)}
+              name="consentimento"
+            />
+            <span>Eu aceito e autorizo o uso dos dados acima dispostos</span>
+          </div>
+
           <div>
-            <button className={styles.sendForm} type="submit">
+            <button disabled={!consentiment} className={styles.sendForm} type="submit">
               Enviar
             </button>
           </div>

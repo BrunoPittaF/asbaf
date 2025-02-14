@@ -1,0 +1,27 @@
+.page {
+  margin: 20px;
+  header {
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      list-style-type: none;
+      gap: 20px;
+      li {
+        button {
+          background-color: #115bb6cc;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          padding: 10px;
+          cursor: pointer;
+          transition: filter 0.2s;
+
+          &:hover {
+            filter: brightness(0.8);
+          }
+        }
+      }
+    }
+  }
+}

@@ -92,7 +92,7 @@ const Carroussel: React.FC<ICarroussel> = ({ title }: ICarroussel) => {
             <a href="#" className={styles.card}>
               {/* <img src="/images/nota-de-esclarecimento.jpg" alt="card" /> */}
             </a>
-            <a href="/notice" className={styles.card}>
+            <a href="/notice/1" className={styles.card}>
               <img src="/images/nota-de-esclarecimento.jpg" alt="card" />
             </a>
             <a href="#" className={styles.card}>

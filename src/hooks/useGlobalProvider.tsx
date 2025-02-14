@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ILoggedUser, IUserStateContext } from '../interfaces/global';
+import { ILoggedUser, INotice, IUserStateContext } from '../interfaces/global';
 
 export function useGlobalProvider() {
   const backupUser = {
@@ -29,11 +29,20 @@ export function useGlobalProvider() {
     facebook: '',
     Image: '',
   });
+  const [noticeGlobal, setNoticeGlobal] = useState<INotice>({
+    content: '',
+    date: '',
+    image: '',
+    subtitle: '',
+    title: '',
+  });
 
   return {
     userState,
     setUserState,
     loggedUser,
     setLoggedUser,
+    noticeGlobal,
+    setNoticeGlobal,
   };
 }

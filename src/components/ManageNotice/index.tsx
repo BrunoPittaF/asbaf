@@ -3,8 +3,12 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import styles from './manageNotice.module.scss';
+
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import axios from 'axios';
+import { baseURL } from '../../api';
 
 const schema = yup.object().shape({
   image: yup.mixed<FileList>().required('Imagem é obrigatória.'),
@@ -30,37 +34,39 @@ const ManageNotice: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: NewsFormData) => {
+  const onSubmit = async (data: NewsFormData) => {
     const formData = new FormData();
     formData.append('image', data.image[0]);
     formData.append('title', data.title);
     formData.append('subtitle', data.subtitle);
     formData.append('content', data.content);
 
-    console.log('Form Data:', data);
-    // Aqui você pode enviar `formData` para o backend.
+    const response = await axios.post(`${baseURL}/notice/`, formData);
+    const responseData = await response.data;
+
+    return responseData;
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="image">Imagem</label>
+    <form className={styles.formManageNotice} onSubmit={handleSubmit(onSubmit)}>
+      <div className={styles.formDiv}>
+        <label htmlFor="image">Imagem de capa</label>
         <input id="image" type="file" accept="image/*" {...register('image')} />
         {errors.image && <p>{errors.image.message}</p>}
       </div>
 
-      <div>
+      <div className={styles.formDiv}>
         <label htmlFor="title">Título</label>
         <input id="title" {...register('title')} />
         {errors.title && <p>{errors.title.message}</p>}
       </div>
 
-      <div>
+      <div className={styles.formDiv}>
         <label htmlFor="subtitle">Subtítulo</label>
         <input id="subtitle" {...register('subtitle')} />
         {errors.subtitle && <p>{errors.subtitle.message}</p>}
       </div>
 
-      <div>
+      <div className={styles.formDiv}>
         <label htmlFor="content">Conteúdo</label>
         {/* <textarea id="content" {...register('content')} />
          */}
