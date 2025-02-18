@@ -1,9 +1,11 @@
 import axios from 'axios';
 
+//caio
+
 //local
-export const baseURL = import.meta.env.REACT_APP_BASE_URL || 'http://localhost:8080'
+// export const baseURL = import.meta.env.REACT_APP_BASE_URL || 'http://localhost:8080'
 //prod
-// export const baseURL = 'https://backend-asbaf.vercel.app'
+export const baseURL = 'https://backend-asbaf.vercel.app'
 
 
 const api = axios.create({

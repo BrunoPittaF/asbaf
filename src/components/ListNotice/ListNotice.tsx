@@ -12,9 +12,9 @@ const ListNotice: React.FC = () => {
   const navigate = useNavigate();
   const { setNoticeGlobal } = useGlobalProvider();
 
-  const customNavigate = (notice: INotice) => {
+  const customNavigate = async (notice: INotice) => {
     setNoticeGlobal(notice);
-    navigate(`/${String(notice.id)}`);
+    navigate(`/admin/noticia/${String(notice.id)}`);
   };
 
   async function getListNotice() {

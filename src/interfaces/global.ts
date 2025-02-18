@@ -4,6 +4,19 @@ export interface IUserStateContext {
   name: string
 }
 
+export interface IPartner {
+  id?: number,
+  cnpj: string,
+  name: string,
+  cellphone: string,
+  email: string,
+  instagram?: string,
+  website?: string,
+  note?: string,
+  image?: string,
+  isPartner: boolean
+}
+
 export interface ILoggedUser {
   id: number;
   cpf: string,
@@ -42,3 +55,10 @@ export interface INotice {
   subtitle: string,
   title: string
 }
+
+export type NewsFormData = {
+  image: FileList;
+  title: string;
+  subtitle: string;
+  content: string;
+};

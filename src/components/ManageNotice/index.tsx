@@ -9,6 +9,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import axios from 'axios';
 import { baseURL } from '../../api';
+import { NewsFormData } from '../../interfaces/global';
 
 const schema = yup.object().shape({
   image: yup.mixed<FileList>().required('Imagem é obrigatória.'),
@@ -16,13 +17,6 @@ const schema = yup.object().shape({
   subtitle: yup.string().required('Subtítulo é obrigatório.'),
   content: yup.string().required('Conteúdo é obrigatório.'),
 });
-
-type NewsFormData = {
-  image: FileList;
-  title: string;
-  subtitle: string;
-  content: string;
-};
 
 const ManageNotice: React.FC = () => {
   const {

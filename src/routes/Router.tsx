@@ -11,6 +11,7 @@ import Notice from '../pages/Notice/Notice';
 import { UseGlobalContext } from '../context/useGlobalContext';
 import Partner from '../pages/Partner';
 import Admin from '../pages/Admin';
+import EditNotice from '../pages/Admin/EditNotice';
 
 export function Router() {
   return (
@@ -28,6 +29,7 @@ export function Router() {
         </Route>
         <Route path="/notice/:id" element={<Notice />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/noticia/:id" element={<EditNotice />} />
       </Routes>
     </UseGlobalContext>
   );

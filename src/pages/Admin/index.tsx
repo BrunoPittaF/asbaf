@@ -3,6 +3,7 @@ import ManageNotice from '../../components/ManageNotice';
 
 import styles from './styles.module.scss';
 import ListNotice from '../../components/ListNotice/ListNotice';
+import ListPartner from '../../components/ListPartner/ListPartner';
 
 //add noticias, parceiros, código do instagram, imagens diretorias, imagens galeria
 
@@ -15,6 +16,7 @@ type IAdminTitlePage = {
   diretorias: string;
   galeria: string;
   listagem: string;
+  listarParceiros: string;
 };
 
 const adminTitlePage: IAdminTitlePage = {
@@ -24,6 +26,7 @@ const adminTitlePage: IAdminTitlePage = {
   diretorias: 'Adicionar Diretoria',
   galeria: 'Adicionar Imagem',
   listagem: 'Lista de Notícias',
+  listarParceiros: 'Lista de Pedidos de Parcerias',
 };
 
 const adminContent = {
@@ -33,6 +36,7 @@ const adminContent = {
   diretorias: <ManageNotice />,
   galeria: <ManageNotice />,
   listagem: <ListNotice />,
+  listarParceiros: <ListPartner />,
 };
 
 const Admin: React.FC = () => {
@@ -73,6 +77,9 @@ const Admin: React.FC = () => {
           </li>
           <li>
             <button onClick={() => setTitlePage('listagem')}>Lista de Notícias</button>
+          </li>
+          <li>
+            <button onClick={() => setTitlePage('listarParceiros')}>Lista de pedidos de parceria</button>
           </li>
           <li>
             <button onClick={() => setTitlePage('parceiros')}>Adicionar Parceiro</button>
