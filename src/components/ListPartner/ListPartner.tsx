@@ -7,12 +7,21 @@ import Correct from '/images/correct.png';
 import Cancel from '/images/Cancel.png';
 
 import styles from './listPartner.module.scss';
-import { useGlobalProvider } from '../../hooks/useGlobalProvider';
+import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../../hooks/useGlobal';
 
 const ListPartner: React.FC = () => {
-  const { setPartnerGlobal } = useGlobalProvider();
+  const navigate = useNavigate();
+
+  const { setPartnerGlobal } = useGlobalContext();
   const [partners, setPartners] = useState<IPartner[]>([]);
   const [auxPartner, setAuxPartner] = useState<IPartner[]>([]);
+
+  const customNavigate = async (partner: IPartner) => {
+    setPartnerGlobal(partner);
+
+    navigate(`/admin/parceiro/${String(partner.id)}`);
+  };
 
   function filterDisablePartner() {
     const filteredPartners = partners.filter((item) => item.isPartner === false);
@@ -35,6 +44,7 @@ const ListPartner: React.FC = () => {
     const responseData = await response.data;
     setAuxPartner(responseData.partners);
     setPartners(responseData.partners);
+    // setListPartner(responseData.partners);
   }
 
   useEffect(() => {
@@ -54,7 +64,7 @@ const ListPartner: React.FC = () => {
           auxPartner.map((partner, index) => (
             <div className={styles.element} key={partner.id! + index}>
               <div className={styles.datas}>
-                <p onClick={() => setPartnerGlobal(partner)} className={styles.name}>
+                <p onClick={() => customNavigate(partner)} className={styles.name}>
                   {partner.name}
                 </p>
                 <p>{partner.cnpj}</p>

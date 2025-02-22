@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { GlobalContext } from '../context/useGlobalContext';
 
-export function useAppContext() {
+export function useGlobalContext() {
   const context = useContext(GlobalContext);
 
   if (typeof GlobalContext === 'undefined') {

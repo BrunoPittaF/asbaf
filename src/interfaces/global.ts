@@ -42,6 +42,8 @@ export interface IGlobalContext {
   setNoticeGlobal: React.Dispatch<React.SetStateAction<INotice>>,
   partnerGlobal: IPartner,
   setPartnerGlobal: React.Dispatch<React.SetStateAction<IPartner>>,
+  listPartner: IPartner[],
+  setListPartner: React.Dispatch<React.SetStateAction<IPartner[]>>
 }
 
 export interface ILoadingContext {

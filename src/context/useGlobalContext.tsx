@@ -6,12 +6,10 @@ interface IUseGlobalContext {
   children: ReactNode;
 }
 
-export const GlobalContext = createContext({} as IGlobalContext);
+export const GlobalContext = createContext<IGlobalContext>({} as IGlobalContext);
 
-export function UseGlobalContext(props: IUseGlobalContext) {
+export function GlobalProvider(props: IUseGlobalContext) {
   const globalProvider = useGlobalProvider();
 
   return <GlobalContext.Provider value={globalProvider}>{props.children}</GlobalContext.Provider>;
 }
-
-export default GlobalContext;

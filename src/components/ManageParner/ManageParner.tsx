@@ -7,7 +7,8 @@ import { IPartner } from '../../interfaces/global';
 // import { baseURL } from '../../api';
 
 import styles from './styles.module.scss';
-import { useGlobalProvider } from '../../hooks/useGlobalProvider';
+import axios from 'axios';
+import { baseURL } from '../../api';
 
 const schema = yup.object().shape({
   image: yup.mixed<FileList>(),
@@ -22,9 +23,6 @@ const schema = yup.object().shape({
 });
 
 const ManagePartner: React.FC = () => {
-  const { partnerGlobal } = useGlobalProvider();
-  console.log('caio', 'global', partnerGlobal);
-
   const {
     register,
     handleSubmit,
@@ -44,11 +42,10 @@ const ManagePartner: React.FC = () => {
     formData.append('website', data.website || '');
     formData.append('isPartner', data.website || '');
 
-    // const response = await axios.post(`${baseURL}/notice/`, formData);
-    // const responseData = await response.data;
-    console.log(formData);
+    const response = await axios.post(`${baseURL}/partner/register`, formData);
+    const responseData = await response.data;
 
-    // return responseData;
+    return responseData;
   };
 
   return (
@@ -60,42 +57,48 @@ const ManagePartner: React.FC = () => {
       </div>
 
       <div className={styles.formDiv}>
-        <label htmlFor="title">Título</label>
+        <label htmlFor="title">CNPJ</label>
         <input id="title" {...register('cnpj')} />
         {errors.cnpj && <p>{errors.cnpj.message}</p>}
       </div>
 
       <div className={styles.formDiv}>
-        <label htmlFor="subtitle">Subtítulo</label>
+        <label htmlFor="subtitle">Nome</label>
         <input id="subtitle" {...register('name')} />
         {errors.name && <p>{errors.name.message}</p>}
       </div>
 
       <div className={styles.formDiv}>
-        <label htmlFor="subtitle">Subtítulo</label>
+        <label htmlFor="subtitle">Celular</label>
         <input id="subtitle" {...register('cellphone')} />
         {errors.cellphone && <p>{errors.cellphone.message}</p>}
       </div>
 
       <div className={styles.formDiv}>
-        <label htmlFor="subtitle">Subtítulo</label>
+        <label htmlFor="subtitle">Email</label>
         <input id="subtitle" type="email" {...register('email')} />
         {errors.email && <p>{errors.email.message}</p>}
       </div>
 
       <div className={styles.formDiv}>
-        <label htmlFor="subtitle">Subtítulo</label>
+        <label htmlFor="subtitle">Instagram</label>
         <input id="subtitle" type="text" {...register('instagram')} />
         {errors.instagram && <p>{errors.instagram.message}</p>}
       </div>
 
       <div className={styles.formDiv}>
-        <label htmlFor="subtitle">Subtítulo</label>
+        <label htmlFor="subtitle">Website</label>
         <input id="subtitle" {...register('website')} />
         {errors.website && <p>{errors.website.message}</p>}
       </div>
 
-      <button type="submit">Criar Matéria</button>
+      <div className={styles.divCheckbox}>
+        <label htmlFor="isPartner">Parceiro ativo</label>
+        <input type="checkbox" id="isPartner" {...register('isPartner')} />
+        {errors.isPartner && <p>{errors.isPartner.message}</p>}
+      </div>
+
+      <button type="submit">Registrar Parceiro</button>
     </form>
   );
 };

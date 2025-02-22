@@ -8,14 +8,15 @@ import Legal from '../pages/Legal/Legal';
 import Status from '../pages/Status/Status';
 import Join from '../pages/Join';
 import Notice from '../pages/Notice/Notice';
-import { UseGlobalContext } from '../context/useGlobalContext';
+import { GlobalProvider } from '../context/useGlobalContext';
 import Partner from '../pages/Partner';
 import Admin from '../pages/Admin';
 import EditNotice from '../pages/Admin/EditNotice';
+import EditPartner from '../pages/Admin/EditPartner';
 
 export function Router() {
   return (
-    <UseGlobalContext>
+    <GlobalProvider>
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
           <Route index element={<Home />} />
@@ -30,7 +31,8 @@ export function Router() {
         <Route path="/notice/:id" element={<Notice />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/noticia/:id" element={<EditNotice />} />
+        <Route path="/admin/parceiro/:id" element={<EditPartner />} />
       </Routes>
-    </UseGlobalContext>
+    </GlobalProvider>
   );
 }

@@ -45,6 +45,7 @@ export function useGlobalProvider() {
     instagram: '',
     isPartner: false,
   });
+  const [listPartner, setListPartner] = useState<IPartner[]>([]);
 
   return {
     userState,
@@ -55,5 +56,7 @@ export function useGlobalProvider() {
     setNoticeGlobal,
     partnerGlobal,
     setPartnerGlobal,
+    setListPartner,
+    listPartner,
   };
 }
