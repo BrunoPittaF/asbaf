@@ -4,6 +4,7 @@ import ManageNotice from '../../components/ManageNotice';
 import styles from './styles.module.scss';
 import ListNotice from '../../components/ListNotice/ListNotice';
 import ListPartner from '../../components/ListPartner/ListPartner';
+import ManagePartner from '../../components/ManageParner/ManageParner';
 
 //add noticias, parceiros, código do instagram, imagens diretorias, imagens galeria
 
@@ -17,6 +18,7 @@ type IAdminTitlePage = {
   galeria: string;
   listagem: string;
   listarParceiros: string;
+  registrarParceiros: string;
 };
 
 const adminTitlePage: IAdminTitlePage = {
@@ -27,6 +29,7 @@ const adminTitlePage: IAdminTitlePage = {
   galeria: 'Adicionar Imagem',
   listagem: 'Lista de Notícias',
   listarParceiros: 'Lista de Pedidos de Parcerias',
+  registrarParceiros: 'Registrar Parceiro',
 };
 
 const adminContent = {
@@ -37,6 +40,7 @@ const adminContent = {
   galeria: <ManageNotice />,
   listagem: <ListNotice />,
   listarParceiros: <ListPartner />,
+  registrarParceiros: <ManagePartner />,
 };
 
 const Admin: React.FC = () => {
@@ -80,6 +84,9 @@ const Admin: React.FC = () => {
           </li>
           <li>
             <button onClick={() => setTitlePage('listarParceiros')}>Lista de pedidos de parceria</button>
+          </li>
+          <li>
+            <button onClick={() => setTitlePage('registrarParceiros')}>Registrar Parceiro</button>
           </li>
           <li>
             <button onClick={() => setTitlePage('parceiros')}>Adicionar Parceiro</button>

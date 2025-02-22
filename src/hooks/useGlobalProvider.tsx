@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ILoggedUser, INotice, IUserStateContext } from '../interfaces/global';
+import { ILoggedUser, INotice, IPartner, IUserStateContext } from '../interfaces/global';
 
 export function useGlobalProvider() {
   const backupUser = {
@@ -36,6 +36,15 @@ export function useGlobalProvider() {
     subtitle: '',
     title: '',
   });
+  const [partnerGlobal, setPartnerGlobal] = useState<IPartner>({
+    cnpj: '',
+    email: '',
+    cellphone: '',
+    name: '',
+    website: '',
+    instagram: '',
+    isPartner: false,
+  });
 
   return {
     userState,
@@ -44,5 +53,7 @@ export function useGlobalProvider() {
     setLoggedUser,
     noticeGlobal,
     setNoticeGlobal,
+    partnerGlobal,
+    setPartnerGlobal,
   };
 }

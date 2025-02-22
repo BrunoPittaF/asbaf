@@ -13,8 +13,8 @@ export interface IPartner {
   instagram?: string,
   website?: string,
   note?: string,
-  image?: string,
-  isPartner: boolean
+  image?: FileList,
+  isPartner?: boolean
 }
 
 export interface ILoggedUser {
@@ -40,6 +40,8 @@ export interface IGlobalContext {
   setUserState: React.Dispatch<React.SetStateAction<IUserStateContext>>,
   noticeGlobal: INotice,
   setNoticeGlobal: React.Dispatch<React.SetStateAction<INotice>>,
+  partnerGlobal: IPartner,
+  setPartnerGlobal: React.Dispatch<React.SetStateAction<IPartner>>,
 }
 
 export interface ILoadingContext {

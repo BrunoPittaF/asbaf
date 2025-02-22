@@ -7,8 +7,10 @@ import Correct from '/images/correct.png';
 import Cancel from '/images/Cancel.png';
 
 import styles from './listPartner.module.scss';
+import { useGlobalProvider } from '../../hooks/useGlobalProvider';
 
 const ListPartner: React.FC = () => {
+  const { setPartnerGlobal } = useGlobalProvider();
   const [partners, setPartners] = useState<IPartner[]>([]);
   const [auxPartner, setAuxPartner] = useState<IPartner[]>([]);
 
@@ -52,7 +54,9 @@ const ListPartner: React.FC = () => {
           auxPartner.map((partner, index) => (
             <div className={styles.element} key={partner.id! + index}>
               <div className={styles.datas}>
-                <p className={styles.name}>{partner.name}</p>
+                <p onClick={() => setPartnerGlobal(partner)} className={styles.name}>
+                  {partner.name}
+                </p>
                 <p>{partner.cnpj}</p>
               </div>
 
