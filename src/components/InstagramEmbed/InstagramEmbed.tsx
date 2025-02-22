@@ -1,20 +1,30 @@
+import axios from 'axios';
 import React, { useEffect, useRef } from 'react';
+import { baseURL } from '../../api';
 
 //preciso pedir o link de uma postagem embed da asbaf
 
 const InstagramEmbed: React.FC = () => {
+  const [instagramPost, setInstagramPost] = React.useState<string>('');
   const instagramRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = '//www.instagram.com/embed.js';
-    script.async = true;
-    script.onload = () => {
-      if ((window as any).instgrm) {
-        (window as any).instgrm.Embeds.process();
-      }
-    };
-    instagramRef.current?.appendChild(script);
+    async function getInstagramPost() {
+      const response = await axios.get(`${baseURL}/instagram/list`);
+      const responseData = await response.data;
+
+      setInstagramPost(responseData.instagram[responseData.instagram.length - 1].url);
+      const script = document.createElement('script');
+      script.src = '//www.instagram.com/embed.js';
+      script.async = true;
+      script.onload = () => {
+        if ((window as any).instgrm) {
+          (window as any).instgrm.Embeds.process();
+        }
+      };
+      instagramRef.current?.appendChild(script);
+    }
+    getInstagramPost();
   }, []);
 
   return (
@@ -22,7 +32,7 @@ const InstagramEmbed: React.FC = () => {
       <blockquote
         className="instagram-media"
         data-instgrm-captioned
-        data-instgrm-permalink="https://www.instagram.com/p/DARdIv5JCeh/?utm_source=ig_embed&amp;utm_campaign=loading"
+        data-instgrm-permalink={`https://www.instagram.com/p/${instagramPost}/?utm_source=ig_embed&amp;utm_campaign=loading`}
         data-instgrm-version="14"
         style={{
           background: '#FFF',
@@ -38,7 +48,7 @@ const InstagramEmbed: React.FC = () => {
       >
         <div style={{ padding: '16px' }}>
           <a
-            href="https://www.instagram.com/p/DARdIv5JCeh/?utm_source=ig_embed&amp;utm_campaign=loading"
+            href={`https://www.instagram.com/p/${instagramPost}/?utm_source=ig_embed&amp;utm_campaign=loading`}
             style={{
               background: '#FFFFFF',
               lineHeight: 0,
@@ -253,7 +263,7 @@ const InstagramEmbed: React.FC = () => {
             }}
           >
             <a
-              href="https://www.instagram.com/p/DARdIv5JCeh/?utm_source=ig_embed&amp;utm_campaign=loading"
+              href={`https://www.instagram.com/p/${instagramPost}/?utm_source=ig_embed&amp;utm_campaign=loading`}
               style={{
                 color: '#c9c8cd',
                 fontFamily: 'Arial,sans-serif',

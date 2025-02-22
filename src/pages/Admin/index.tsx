@@ -5,6 +5,7 @@ import styles from './styles.module.scss';
 import ListNotice from '../../components/ListNotice/ListNotice';
 import ListPartner from '../../components/ListPartner/ListPartner';
 import ManagePartner from '../../components/ManageParner/ManageParner';
+import InstagramAdmin from '../../components/InstagramAdmin/InstagramAdmin';
 
 //add noticias, parceiros, código do instagram, imagens diretorias, imagens galeria
 
@@ -12,7 +13,6 @@ import ManagePartner from '../../components/ManageParner/ManageParner';
 
 type IAdminTitlePage = {
   noticias: string;
-  parceiros: string;
   instagram: string;
   diretorias: string;
   galeria: string;
@@ -23,7 +23,6 @@ type IAdminTitlePage = {
 
 const adminTitlePage: IAdminTitlePage = {
   noticias: 'Criar Noticia',
-  parceiros: 'Adicionar Parceiro',
   instagram: 'Postagem Instagram',
   diretorias: 'Adicionar Diretoria',
   galeria: 'Adicionar Imagem',
@@ -34,8 +33,7 @@ const adminTitlePage: IAdminTitlePage = {
 
 const adminContent = {
   noticias: <ManageNotice />,
-  parceiros: <ManageNotice />,
-  instagram: <ManageNotice />,
+  instagram: <InstagramAdmin />,
   diretorias: <ManageNotice />,
   galeria: <ManageNotice />,
   listagem: <ListNotice />,
@@ -87,9 +85,6 @@ const Admin: React.FC = () => {
           </li>
           <li>
             <button onClick={() => setTitlePage('registrarParceiros')}>Registrar Parceiro</button>
-          </li>
-          <li>
-            <button onClick={() => setTitlePage('parceiros')}>Adicionar Parceiro</button>
           </li>
           <li>
             <button onClick={() => setTitlePage('instagram')}>Postagem Instagram</button>

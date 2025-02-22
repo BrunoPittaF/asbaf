@@ -66,3 +66,8 @@ export type NewsFormData = {
   subtitle: string;
   content: string;
 };
+
+export interface IInstagramLink {
+  id?: number,
+  url: string
+}
