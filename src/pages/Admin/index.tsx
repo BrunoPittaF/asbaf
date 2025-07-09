@@ -6,6 +6,8 @@ import ListNotice from '../../components/ListNotice/ListNotice';
 import ListPartner from '../../components/ListPartner/ListPartner';
 import ManagePartner from '../../components/ManageParner/ManageParner';
 import InstagramAdmin from '../../components/InstagramAdmin/InstagramAdmin';
+import CreateGalleryForm from '../../components/CreateGallery/CreateGallery';
+import CreateDirectorsImages from '../../components/CreateDirectorsImage/CreateDirectorsImages';
 
 //add noticias, parceiros, código do instagram, imagens diretorias, imagens galeria
 
@@ -34,8 +36,8 @@ const adminTitlePage: IAdminTitlePage = {
 const adminContent = {
   noticias: <ManageNotice />,
   instagram: <InstagramAdmin />,
-  diretorias: <ManageNotice />,
-  galeria: <ManageNotice />,
+  diretorias: <CreateDirectorsImages />,
+  galeria: <CreateGalleryForm />,
   listagem: <ListNotice />,
   listarParceiros: <ListPartner />,
   registrarParceiros: <ManagePartner />,
