@@ -6,8 +6,8 @@ import ListNotice from '../../components/ListNotice/ListNotice';
 import ListPartner from '../../components/ListPartner/ListPartner';
 import ManagePartner from '../../components/ManageParner/ManageParner';
 import InstagramAdmin from '../../components/InstagramAdmin/InstagramAdmin';
-
-//add noticias, parceiros, código do instagram, imagens diretorias, imagens galeria
+import CreateGalleryForm from '../../components/CreateGallery/CreateGallery';
+import CreateDirectorsImages from '../../components/CreateDirectorsImage/CreateDirectorsImages';
 
 // Validation schema
 
@@ -34,8 +34,8 @@ const adminTitlePage: IAdminTitlePage = {
 const adminContent = {
   noticias: <ManageNotice />,
   instagram: <InstagramAdmin />,
-  diretorias: <ManageNotice />,
-  galeria: <ManageNotice />,
+  diretorias: <CreateDirectorsImages />,
+  galeria: <CreateGalleryForm />,
   listagem: <ListNotice />,
   listarParceiros: <ListPartner />,
   registrarParceiros: <ManagePartner />,

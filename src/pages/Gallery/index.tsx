@@ -1,62 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Gallery from '../../components/Gallery/Gallery';
 import styles from './styles.module.scss';
 
-type GlobImport = Record<string, () => Promise<unknown>>;
-
 interface IPath {
-  name: string;
-  pathImage: string;
+  folder: string;
+  images: string[]
 }
 
-const paths: IPath[] = [
-  {
-    name: 'Confraternização de fim de ano (2021)',
-    pathImage: 'fim-de-ano-2021',
-  },
-  {
-    name: 'Homenagem à Secretária da Fazenda: Giovanna Victer (2023)',
-    pathImage: 'homenagem-giovanna-2023',
-  },
-  {
-    name: 'Assembleia Geral 15/10/2024',
-    pathImage: 'assembleia-geral-15-10',
-  },
-  {
-    name: 'Comemoração Dia do Fisco 2024',
-    pathImage: 'confraternizacao-dia-do-fisco-2024',
-  },
-  {
-    name: 'Confraternização 2024',
-    pathImage: 'confraternizacao-2024',
-  },
-];
+const BigGallery: React.FC = () => {
+  const [images, setImages] = useState<IPath[]>([]);
+  const [galleryImages, setGalleryImages] = useState<string[]>([])
 
-const listPaths: Record<string, GlobImport> = {
-  'fim-de-ano-2021': import.meta.glob('/public/images/fim-de-ano-2021/*.{png,jpg,jpeg,svg}'),
-  'homenagem-giovanna-2023': import.meta.glob('/public/images/homenagem-giovanna-2023/*.{png,jpg,jpeg,svg}'),
-  'assembleia-geral-15-10': import.meta.glob('/public/images/assembleia-geral-15-10/*.{png,jpg,jpeg,svg}'),
-  'confraternizacao-dia-do-fisco-2024': import.meta.glob(
-    '/public/images/confraternizacao-dia-do-fisco-2024/*.{png,jpg,jpeg,svg}'
-  ),
-  'confraternizacao-2024': import.meta.glob('/public/images/confraternizacao-2024/*.{png,jpg,jpeg,svg}'),
-};
+  function changeImagePathGallery(folderImage: string): void {
+    const groupedImages = images.find((item) => item.folder === folderImage)?.images;  
 
-const Directors: React.FC = () => {
-  const [images, setImage] = useState<any[]>([]);
-
-  function changeImagePathGallery(pathImage: keyof typeof listPaths) {
-    const imagesGlob = listPaths[pathImage];
-    if (!imagesGlob) return;
-
-    const imagesArray: string[] = [];
-    for (const path in imagesGlob) {
-      const pathReplaced = path.replace('/public', '');
-      imagesArray.push(pathReplaced);
+    if(groupedImages && groupedImages.length > 0) {
+      const imagesChangePath = groupedImages.map((element) => element = `http://localhost:8080/uploads/${folderImage}/${element}`)
+      setGalleryImages(imagesChangePath)
     }
 
-    setImage(imagesArray);
   }
+
+  useEffect(() => {
+    async function getImagesGallery() {
+      const response = await fetch('http://localhost:8080/images/gallery');
+      const responseData = await response.json();
+      setImages(responseData);
+    }
+    getImagesGallery()
+  }, [])
 
   return (
     <main className={styles.main}>
@@ -64,16 +36,16 @@ const Directors: React.FC = () => {
         <h2>Galeria</h2>
 
         <div className={styles.galleryOptions}>
-          {paths.map((path, index) => (
-            <button key={path.name + index} onClick={() => changeImagePathGallery(path.pathImage)}>
-              {path.name}
+          {images.map((element, index) => (
+            <button key={element.folder + index} onClick={() => changeImagePathGallery(element.folder)}>
+              {element.folder}
             </button>
           ))}
         </div>
-        <Gallery images={images} />
+        <Gallery images={galleryImages} />
       </div>
     </main>
   );
 };
 
-export default Directors;
+export default BigGallery;
