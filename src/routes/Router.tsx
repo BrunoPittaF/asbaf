@@ -1,18 +1,18 @@
-import { Route, Routes } from 'react-router-dom';
-import { DefaultLayout } from '../Layouts/DefaulLayouts';
-import { Home } from '../pages/Home';
-import Directors from '../pages/Directors';
-import BigGallery from '../pages/Gallery';
-import Legislation from '../pages/legislation/Legislation';
-import Legal from '../pages/Legal/Legal';
-import Status from '../pages/Status/Status';
-import Join from '../pages/Join';
-import Notice from '../pages/Notice/Notice';
-import { GlobalProvider } from '../context/useGlobalContext';
-import Partner from '../pages/Partner';
-import Admin from '../pages/Admin';
-import EditNotice from '../pages/Admin/EditNotice';
-import EditPartner from '../pages/Admin/EditPartner';
+import { Route, Routes } from "react-router-dom";
+import { DefaultLayout } from "../Layouts/DefaulLayouts";
+import { Home } from "../pages/Home";
+import Directors from "../pages/Directors";
+import BigGallery from "../pages/Gallery";
+import Legislation from "../pages/legislation/Legislation";
+import Legal from "../pages/Legal/Legal";
+import Status from "../pages/Status/Status";
+import Join from "../pages/Join";
+import Notice from "../pages/Notice/Notice";
+import { GlobalProvider } from "../context/useGlobalContext";
+import Partner from "../pages/Partner";
+import Admin from "../pages/Admin";
+import EditNotice from "../pages/Admin/EditNotice";
+import EditPartner from "../pages/Admin/EditPartner";
 
 export function Router() {
   return (
@@ -28,10 +28,12 @@ export function Router() {
           <Route path="/associe-se" element={<Join />} />
           <Route path="/seja-parceiro-asbaf" element={<Partner />} />
         </Route>
+        <Route>
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/noticia/:id" element={<EditNotice />} />
+          <Route path="/admin/parceiro/:id" element={<EditPartner />} />
+        </Route>
         <Route path="/notice/:id" element={<Notice />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/admin/noticia/:id" element={<EditNotice />} />
-        <Route path="/admin/parceiro/:id" element={<EditPartner />} />
       </Routes>
     </GlobalProvider>
   );
