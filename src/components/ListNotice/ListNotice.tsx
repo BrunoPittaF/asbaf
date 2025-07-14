@@ -14,7 +14,7 @@ const ListNotice: React.FC = () => {
 
   const customNavigate = async (notice: INotice) => {
     setNoticeGlobal(notice);
-    navigate(`/admin/noticia/${String(notice.id)}`);
+    navigate(`/manager/noticia/${String(notice.id)}`);
   };
 
   async function getListNotice() {

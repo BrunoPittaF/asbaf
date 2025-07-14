@@ -29,7 +29,7 @@ export function Router() {
           <Route path="/associe-se" element={<Join />} />
           <Route path="/seja-parceiro-asbaf" element={<Partner />} />
         </Route>
-        <Route path="/admin" element={<AdminLayout />}>
+        <Route path="/manager" element={<AdminLayout />}>
           <Route index element={<Admin />} />
           <Route path="noticia/:id" element={<EditNotice />} />
           <Route path="parceiro/:id" element={<EditPartner />} />

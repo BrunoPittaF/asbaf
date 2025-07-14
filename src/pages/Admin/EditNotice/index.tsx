@@ -79,7 +79,7 @@ const EditNotice: React.FC = () => {
       subtitle: '',
       title: '',
     });
-    navigate('/admin');
+    navigate('/manager');
   };
 
   return (

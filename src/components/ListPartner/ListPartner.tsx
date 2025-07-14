@@ -20,7 +20,7 @@ const ListPartner: React.FC = () => {
   const customNavigate = async (partner: IPartner) => {
     setPartnerGlobal(partner);
 
-    navigate(`/admin/parceiro/${String(partner.id)}`);
+    navigate(`/manager/parceiro/${String(partner.id)}`);
   };
 
   function filterDisablePartner() {
