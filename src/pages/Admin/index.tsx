@@ -9,8 +9,6 @@ import InstagramAdmin from '../../components/InstagramAdmin/InstagramAdmin';
 import CreateGalleryForm from '../../components/CreateGallery/CreateGallery';
 import CreateDirectorsImages from '../../components/CreateDirectorsImage/CreateDirectorsImages';
 
-//add noticias, parceiros, código do instagram, imagens diretorias, imagens galeria
-
 // Validation schema
 
 type IAdminTitlePage = {
