@@ -13,6 +13,7 @@ import Partner from "../pages/Partner";
 import Admin from "../pages/Admin";
 import EditNotice from "../pages/Admin/EditNotice";
 import EditPartner from "../pages/Admin/EditPartner";
+import { AdminLayout } from "../Layouts/AdminLayout";
 
 export function Router() {
   return (
@@ -28,10 +29,10 @@ export function Router() {
           <Route path="/associe-se" element={<Join />} />
           <Route path="/seja-parceiro-asbaf" element={<Partner />} />
         </Route>
-        <Route>
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/admin/noticia/:id" element={<EditNotice />} />
-          <Route path="/admin/parceiro/:id" element={<EditPartner />} />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Admin />} />
+          <Route path="noticia/:id" element={<EditNotice />} />
+          <Route path="parceiro/:id" element={<EditPartner />} />
         </Route>
         <Route path="/notice/:id" element={<Notice />} />
       </Routes>
